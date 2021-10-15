@@ -83,6 +83,7 @@
     <EntitySetMapping Name="tb_PhieuXuatHang">
       <EntityTypeMapping TypeName="QLDaiLyModel.tb_PhieuXuatHang">
         <MappingFragment StoreEntitySet="tb_PhieuXuatHang">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="Ma_PhieuXuat" ColumnName="Ma_PhieuXuat" />
           <ScalarProperty Name="Ma_DaiLy" ColumnName="Ma_DaiLy" />
           <ScalarProperty Name="Ngay_Lap" ColumnName="Ngay_Lap" />

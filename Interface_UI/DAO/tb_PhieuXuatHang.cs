@@ -24,6 +24,7 @@ namespace Interface_UI.DAO
         public int Ma_DaiLy { get; set; }
         public System.DateTime Ngay_Lap { get; set; }
         public double TongTien { get; set; }
+        public string GhiChu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_ChiTiet_XuatHang> tb_ChiTiet_XuatHang { get; set; }

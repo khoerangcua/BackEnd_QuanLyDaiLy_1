@@ -80,6 +80,7 @@
     <Property Name="Ma_DaiLy" Type="int" Nullable="false" />
     <Property Name="Ngay_Lap" Type="datetime" Nullable="false" />
     <Property Name="TongTien" Type="float" Nullable="false" />
+    <Property Name="GhiChu" Type="nchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tb_Quan">
     <Key>

@@ -8,7 +8,7 @@ using Interface_UI.DAO;
 using Interface_UI.BUS.Validators;
 namespace Interface_UI.BUS.Controllers
 {
-    class TaiKhoanController
+    public class TaiKhoanController
     {
         public string MessageFailure { get; set; }
         private TaiKhoanValidator taiKhoanValidator;

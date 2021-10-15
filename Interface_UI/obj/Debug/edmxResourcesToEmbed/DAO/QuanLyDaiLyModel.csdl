@@ -95,6 +95,7 @@
     <Property Name="TongTien" Type="Double" Nullable="false" />
     <NavigationProperty Name="tb_ChiTiet_XuatHang" Relationship="Self.FK_tb_ChiTiet_XuatHang_tb_PhieuXuatHang" FromRole="tb_PhieuXuatHang" ToRole="tb_ChiTiet_XuatHang" />
     <NavigationProperty Name="tb_DaiLy" Relationship="Self.FK_tb_PhieuXuatHang_tb_DaiLy" FromRole="tb_PhieuXuatHang" ToRole="tb_DaiLy" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="tb_Quan">
     <Key>

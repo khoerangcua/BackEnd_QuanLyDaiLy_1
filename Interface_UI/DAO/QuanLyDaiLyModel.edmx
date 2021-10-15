@@ -9,34 +9,34 @@
           <Key>
             <PropertyRef Name="Ma_BC_CongNo" />
           </Key>
+          <Property Name="Ma_BC_CongNo" Type="int" Nullable="false" />
           <Property Name="Ma_DaiLy" Type="int" Nullable="false" />
           <Property Name="Ngay_lap" Type="datetime" Nullable="false" />
           <Property Name="No_Dau" Type="float" Nullable="false" />
           <Property Name="Phat_Sinh" Type="float" Nullable="false" />
           <Property Name="No_Cuoi" Type="float" Nullable="false" />
-          <Property Name="Ma_BC_CongNo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tb_BC_DoanhSo">
           <Key>
             <PropertyRef Name="Ma_BC_DoanhSo" />
           </Key>
+          <Property Name="Ma_BC_DoanhSo" Type="int" Nullable="false" />
           <Property Name="Ma_DaiLy" Type="int" Nullable="false" />
           <Property Name="Ngay_Lap" Type="datetime" Nullable="false" />
           <Property Name="So_PhieuXuat" Type="int" Nullable="false" />
           <Property Name="Tong_TriGia" Type="float" Nullable="false" />
           <Property Name="Ty_Le" Type="float" Nullable="false" />
-          <Property Name="Ma_BC_DoanhSo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tb_ChiTiet_XuatHang">
           <Key>
             <PropertyRef Name="Ma_ChiTiet_XuatHang" />
           </Key>
+          <Property Name="Ma_ChiTiet_XuatHang" Type="int" Nullable="false" />
           <Property Name="Ma_PhieuXuat" Type="int" Nullable="false" />
           <Property Name="Ma_HangHoa" Type="int" Nullable="false" />
           <Property Name="So_Luong" Type="int" Nullable="false" />
           <Property Name="Don_Gia" Type="float" Nullable="false" />
           <Property Name="Thanh_Tien" Type="float" Nullable="false" />
-          <Property Name="Ma_ChiTiet_XuatHang" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tb_DaiLy">
           <Key>
@@ -85,6 +85,7 @@
           <Property Name="Ma_DaiLy" Type="int" Nullable="false" />
           <Property Name="Ngay_Lap" Type="datetime" Nullable="false" />
           <Property Name="TongTien" Type="float" Nullable="false" />
+          <Property Name="GhiChu" Type="nchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tb_Quan">
           <Key>
@@ -341,6 +342,7 @@
           <Property Name="TongTien" Type="Double" Nullable="false" />
           <NavigationProperty Name="tb_ChiTiet_XuatHang" Relationship="Self.FK_tb_ChiTiet_XuatHang_tb_PhieuXuatHang" FromRole="tb_PhieuXuatHang" ToRole="tb_ChiTiet_XuatHang" />
           <NavigationProperty Name="tb_DaiLy" Relationship="Self.FK_tb_PhieuXuatHang_tb_DaiLy" FromRole="tb_PhieuXuatHang" ToRole="tb_DaiLy" />
+          <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="tb_Quan">
           <Key>
@@ -587,6 +589,7 @@
           <EntitySetMapping Name="tb_PhieuXuatHang">
             <EntityTypeMapping TypeName="QLDaiLyModel.tb_PhieuXuatHang">
               <MappingFragment StoreEntitySet="tb_PhieuXuatHang">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="Ma_PhieuXuat" ColumnName="Ma_PhieuXuat" />
                 <ScalarProperty Name="Ma_DaiLy" ColumnName="Ma_DaiLy" />
                 <ScalarProperty Name="Ngay_Lap" ColumnName="Ngay_Lap" />
