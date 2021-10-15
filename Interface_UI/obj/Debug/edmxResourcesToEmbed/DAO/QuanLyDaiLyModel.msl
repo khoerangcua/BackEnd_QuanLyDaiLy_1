@@ -99,5 +99,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tb_TaiKhoan">
+      <EntityTypeMapping TypeName="QLDaiLyModel.tb_TaiKhoan">
+        <MappingFragment StoreEntitySet="tb_TaiKhoan">
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="TenTaiKhoan" ColumnName="TenTaiKhoan" />
+          <ScalarProperty Name="ID_TaiKhoan" ColumnName="ID_TaiKhoan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

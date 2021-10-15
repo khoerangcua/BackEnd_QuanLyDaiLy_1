@@ -56,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BUS\Controllers\HoSoDaiLyController.cs" />
+    <Compile Include="BUS\Controllers\TaiKhoanController.cs" />
+    <Compile Include="BUS\Validators\TaiKhoanValidator.cs" />
     <Compile Include="BUS\Validators\HoSoDaiLyValidator.cs" />
     <Compile Include="DAO\QuanLyDaiLyModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -97,6 +99,9 @@
       <DependentUpon>QuanLyDaiLyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAO\tb_Quan.cs">
+      <DependentUpon>QuanLyDaiLyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\tb_TaiKhoan.cs">
       <DependentUpon>QuanLyDaiLyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">

@@ -243,5 +243,14 @@
       <End Role="tb_DaiLy" EntitySet="tb_DaiLy" />
       <End Role="tb_PhieuXuatHang" EntitySet="tb_PhieuXuatHang" />
     </AssociationSet>
+    <EntitySet Name="tb_TaiKhoan" EntityType="QLDaiLyModel.tb_TaiKhoan" />
   </EntityContainer>
+  <EntityType Name="tb_TaiKhoan">
+    <Key>
+      <PropertyRef Name="ID_TaiKhoan" />
+    </Key>
+    <Property Name="ID_TaiKhoan" Type="Int32" Nullable="false" />
+    <Property Name="TenTaiKhoan" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+  </EntityType>
 </Schema>

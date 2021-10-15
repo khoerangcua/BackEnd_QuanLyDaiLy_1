@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLDaiLyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QLDaiLyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tb_BC_CongNo">
           <Key>
             <PropertyRef Name="Ma_BC_CongNo" />
@@ -93,6 +93,14 @@
           <Property Name="Ma_Quan" Type="int" Nullable="false" />
           <Property Name="Ten_Quan" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DaiLy_ToiDa" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_TaiKhoan">
+          <Key>
+            <PropertyRef Name="ID_TaiKhoan" />
+          </Key>
+          <Property Name="ID_TaiKhoan" Type="int" Nullable="false" />
+          <Property Name="TenTaiKhoan" Type="nchar" MaxLength="100" />
+          <Property Name="MatKhau" Type="nchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_tb_BC_CongNo_tb_DaiLy">
           <End Role="tb_DaiLy" Type="Self.tb_DaiLy" Multiplicity="1" />
@@ -200,6 +208,7 @@
           <EntitySet Name="tb_PhieuThuTien" EntityType="Self.tb_PhieuThuTien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_PhieuXuatHang" EntityType="Self.tb_PhieuXuatHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Quan" EntityType="Self.tb_Quan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_TaiKhoan" EntityType="Self.tb_TaiKhoan" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_tb_BC_CongNo_tb_DaiLy" Association="Self.FK_tb_BC_CongNo_tb_DaiLy">
             <End Role="tb_DaiLy" EntitySet="tb_DaiLy" />
             <End Role="tb_BC_CongNo" EntitySet="tb_BC_CongNo" />
@@ -233,8 +242,7 @@
             <End Role="tb_PhieuXuatHang" EntitySet="tb_PhieuXuatHang" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLDaiLyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -481,7 +489,16 @@
             <End Role="tb_DaiLy" EntitySet="tb_DaiLy" />
             <End Role="tb_PhieuXuatHang" EntitySet="tb_PhieuXuatHang" />
           </AssociationSet>
+          <EntitySet Name="tb_TaiKhoan" EntityType="QLDaiLyModel.tb_TaiKhoan" />
         </EntityContainer>
+        <EntityType Name="tb_TaiKhoan">
+          <Key>
+            <PropertyRef Name="ID_TaiKhoan" />
+          </Key>
+          <Property Name="ID_TaiKhoan" Type="Int32" Nullable="false" />
+          <Property Name="TenTaiKhoan" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -583,6 +600,15 @@
                 <ScalarProperty Name="Ma_Quan" ColumnName="Ma_Quan" />
                 <ScalarProperty Name="Ten_Quan" ColumnName="Ten_Quan" />
                 <ScalarProperty Name="DaiLy_ToiDa" ColumnName="DaiLy_ToiDa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_TaiKhoan">
+            <EntityTypeMapping TypeName="QLDaiLyModel.tb_TaiKhoan">
+              <MappingFragment StoreEntitySet="tb_TaiKhoan">
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="TenTaiKhoan" ColumnName="TenTaiKhoan" />
+                <ScalarProperty Name="ID_TaiKhoan" ColumnName="ID_TaiKhoan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

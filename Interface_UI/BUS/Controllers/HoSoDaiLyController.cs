@@ -46,6 +46,7 @@ namespace Interface_UI.BUS.Controllers
         {
             this.db = new QuanLyDaiLyEntities();
             this.hoSoDaiLyValidator = new HoSoDaiLyValidator();
+            this.MessageFailure = "";
 
         }
         #endregion
@@ -55,9 +56,8 @@ namespace Interface_UI.BUS.Controllers
 
         public void ChayLanDau()
         {
-
             //
-            // Load Quận
+            // Load Quận ComboBox
             //
             var result1 = from q in db.tb_Quan
                           select new
@@ -74,7 +74,7 @@ namespace Interface_UI.BUS.Controllers
             QuanComboBox_TimKiem.ValueMember = "MaQuan";
             QuanComboBox_TimKiem.DisplayMember = "TenQuan";
             //
-            // Load loại đại lý
+            // Load loại đại lý ComboBox
             //
             LoaiDaiLyComboBox = new ComboBox();
             var result2 = from ldl in db.tb_LoaiDaiLy
@@ -107,7 +107,11 @@ namespace Interface_UI.BUS.Controllers
         public bool ThemDaiLy()
         {
             //
-            // Lấy giá trị trên form
+            //reset messagefailure
+            //
+            this.MessageFailure = "";
+            //
+            // Lấy thông tin đại lý
             //
             int id = 0;
             if (db.tb_DaiLy.Any())
@@ -127,20 +131,19 @@ namespace Interface_UI.BUS.Controllers
             int maloai = int.Parse(this.LoaiDaiLyComboBox.SelectedValue.ToString());
             string diachi = this.DiaChiText.Text;
             DateTime ngaytiepnhan = DateTime.Now;
-
             //
             //Kiểm tra thông tin đầu vào
             //
-            bool result2 = this.hoSoDaiLyValidator.KiemTraThongTinDaiLy(id, ten, sdt, maquan, email, maloai, diachi);
-            if (result2 == false)
+            bool checkinput = this.hoSoDaiLyValidator.KiemTraThongTinDaiLy(ten,sdt,email, diachi);
+            if (checkinput == false)
             {
-                //TODO: Thông bao lỗi và gọi envent
+                this.MessageFailure = hoSoDaiLyValidator.MessageFailure;
                 return false;
             }
             else
             {
                 //
-                // Tạo mới đối tượng Đại Lý
+                // Tạo mới đối tượng Đại Lý và lưu vào csdl
                 //
                 tb_DaiLy dailynew = new tb_DaiLy
                 {
@@ -154,15 +157,14 @@ namespace Interface_UI.BUS.Controllers
                     Ngay_Tiep_Nhan = ngaytiepnhan
 
                 };
-                //
-                // Thêm vào csdl
-                //
                 db.tb_DaiLy.Add(dailynew);
                 int result3 = db.SaveChanges();
-
+                //
+                //Kiểm tra lưu thành công
+                //
                 if (result3 == 0)
                 {
-                    //TODO: Lưu lỗi
+                    this.MessageFailure = "Thêm đại lý không thành công";
                     return false;
                 }
                 else
@@ -174,29 +176,48 @@ namespace Interface_UI.BUS.Controllers
 
         public bool XoaDaiLy()
         {
+            //
+            //Reset messagefailure
+            //
+            this.MessageFailure = "";
+            //
+            //Lấy thông tin
+            //
             string id = this.MaDaiLyText.Text;
+            //
+            //Kiểm tra thông tin đầu vào
+            //
             if (id == "")
             {
-                //TODO: lưu lỗi trống id
+                this.MessageFailure = "Chưa chọn đại lý";
                 return false;
 
             }
             else
             {
+                //
+                //Kiểm tra đại lý có tồn tại trong csdl
+                //
                 var result = db.tb_DaiLy.FirstOrDefault(dl => dl.Ma_DaiLy == int.Parse(id));
                 if (result == default)
                 {
-                    //TODO: lưu lỗi không tìm thấy trong csdl
+                    this.MessageFailure = "Đại lý không tồn tại";
                     return false;
 
                 }
                 else
                 {
+                    //
+                    //Xóa đại lý khỏi csdl
+                    //
                     db.tb_DaiLy.Remove(result);
                     int result2 = db.SaveChanges();
+                    //
+                    //Kiểm tra xóa thành công
+                    //
                     if (result2 == 0)
                     {
-                        //TODO: lưu lỗi lưu vào csdl không thành công
+                        this.MessageFailure = "Xóa đại lý không thành công";
                         return false;
                     }
                     else
@@ -207,8 +228,15 @@ namespace Interface_UI.BUS.Controllers
             }
         }
 
-        public bool LuuThayDoi()
+        public bool CapNhatDaiLy()
         {
+            //
+            //reset messagefailure
+            //
+            this.MessageFailure = "";
+            //
+            //Lấy thông tin đại lý
+            //
             int id = this.MaDaiLyText.Text == null ? -1 : int.Parse(this.MaDaiLyText.Text);
             string ten = this.TenDaiLyText_HienThi.Text;
             string sdt = this.DienThoaiText.Text;
@@ -216,13 +244,12 @@ namespace Interface_UI.BUS.Controllers
             string email = this.EmailText.Text;
             int maloai = int.Parse(this.LoaiDaiLyComboBox.SelectedValue.ToString());
             string diachi = this.DiaChiText.Text;
-
             //
             // Kiểm tra id có trống ?
             //
             if (id == -1)
             {
-                //TODO: lưu lỗi trống id
+                this.MessageFailure = "Lỗi : chưa điền id";
                 return false;
 
             }
@@ -234,23 +261,26 @@ namespace Interface_UI.BUS.Controllers
                 var result = db.tb_DaiLy.FirstOrDefault(dl => dl.Ma_DaiLy == id);
                 if (result == default)
                 {
-                    //TODO: lưu lỗi không tìm thấy trong csdl
+                    this.MessageFailure = "Đại lý không tồn tại";
                     return false;
 
                 }
                 else
                 {
                     //
-                    //Kiểm tra input
+                    //Kiểm tra thông tin đầu vào
                     //
-                    bool result2 = this.hoSoDaiLyValidator.KiemTraThongTinDaiLy(id, ten, sdt, maquan, email, maloai, diachi);
-                    if (result2 == false)
+                    bool checkinput = this.hoSoDaiLyValidator.KiemTraThongTinDaiLy(ten, sdt, email, diachi);
+                    if (checkinput == false)
                     {
-                        //TODO: lưu lỗi
+                        this.MessageFailure = hoSoDaiLyValidator.MessageFailure;
                         return false;
                     }
                     else
                     {
+                        //
+                        //Thực hiện thay đổi thông tin đại lý và lưu vào csdl
+                        //
                         result.Ten_DaiLy = ten;
                         result.Ma_Quan = maquan;
                         result.Dien_Thoai = sdt;
@@ -263,7 +293,7 @@ namespace Interface_UI.BUS.Controllers
                         //
                         if (result3 == 0)
                         {
-                            //TODO: lưu lỗi lưu vào csdl không thành công
+                            this.MessageFailure = "Thay đổi thông tin đại lý không thành công";
                             return false;
                         }
                         else
@@ -278,8 +308,14 @@ namespace Interface_UI.BUS.Controllers
 
         public void TimKiemDaiLy()
         {
+            //
+            //Lấy thông tin đại lý
+            //
             string ten = this.TenDaiLyText_TimKiem.Text;
             int maquan = int.Parse(this.QuanComboBox_TimKiem.SelectedValue.ToString());
+            //
+            //Thực thi tìm kiếm
+            //
             if (ten == "")
             {
                 //

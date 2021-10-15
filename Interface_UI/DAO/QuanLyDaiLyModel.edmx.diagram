@@ -22,6 +22,7 @@
         <AssociationConnector Association="QLDaiLyModel.FK_tb_DaiLy_tb_Quan" ManuallyRouted="false" />
         <AssociationConnector Association="QLDaiLyModel.FK_tb_PhieuThuTien_tb_DaiLy" ManuallyRouted="false" />
         <AssociationConnector Association="QLDaiLyModel.FK_tb_PhieuXuatHang_tb_DaiLy" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLDaiLyModel.tb_TaiKhoan" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

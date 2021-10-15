@@ -10,10 +10,20 @@ namespace Interface_UI.BUS.Validators
     {
         public string MessageFailure { get; set; }
 
-        public bool KiemTraThongTinDaiLy(int id, string ten, string sdt, int maquan, string email, int maloai, string diachi)
+        public bool KiemTraThongTinDaiLy(string ten, string sdt, string email, string diachi)
         {
-            // kiem tra thong tin dai ly
-
+            //
+            //reset messagefailure
+            //
+            MessageFailure = "";
+            //
+            //Đảm bảo điền đầy đủ thông tin
+            //            
+            if (ten==""|| sdt == ""|| email == ""|| diachi == "")
+            {
+                MessageFailure = "Chưa điền đầy đủ thông tin đại lý";
+                return false;
+            }
             return true;
         }
     }

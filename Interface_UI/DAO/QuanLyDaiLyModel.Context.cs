@@ -34,5 +34,6 @@ namespace Interface_UI.DAO
         public virtual DbSet<tb_PhieuThuTien> tb_PhieuThuTien { get; set; }
         public virtual DbSet<tb_PhieuXuatHang> tb_PhieuXuatHang { get; set; }
         public virtual DbSet<tb_Quan> tb_Quan { get; set; }
+        public virtual DbSet<tb_TaiKhoan> tb_TaiKhoan { get; set; }
     }
 }

@@ -89,6 +89,14 @@
     <Property Name="Ten_Quan" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DaiLy_ToiDa" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="tb_TaiKhoan">
+    <Key>
+      <PropertyRef Name="ID_TaiKhoan" />
+    </Key>
+    <Property Name="ID_TaiKhoan" Type="int" Nullable="false" />
+    <Property Name="TenTaiKhoan" Type="nchar" MaxLength="100" />
+    <Property Name="MatKhau" Type="nchar" MaxLength="100" />
+  </EntityType>
   <Association Name="FK_tb_BC_CongNo_tb_DaiLy">
     <End Role="tb_DaiLy" Type="Self.tb_DaiLy" Multiplicity="1" />
     <End Role="tb_BC_CongNo" Type="Self.tb_BC_CongNo" Multiplicity="*" />
@@ -195,6 +203,7 @@
     <EntitySet Name="tb_PhieuThuTien" EntityType="Self.tb_PhieuThuTien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tb_PhieuXuatHang" EntityType="Self.tb_PhieuXuatHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tb_Quan" EntityType="Self.tb_Quan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_TaiKhoan" EntityType="Self.tb_TaiKhoan" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_tb_BC_CongNo_tb_DaiLy" Association="Self.FK_tb_BC_CongNo_tb_DaiLy">
       <End Role="tb_DaiLy" EntitySet="tb_DaiLy" />
       <End Role="tb_BC_CongNo" EntitySet="tb_BC_CongNo" />
