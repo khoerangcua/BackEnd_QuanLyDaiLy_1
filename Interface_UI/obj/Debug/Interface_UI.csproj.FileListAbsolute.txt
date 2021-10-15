@@ -1,0 +1,14 @@
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\bin\Debug\Interface_UI.exe.config
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\bin\Debug\Interface_UI.exe
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\bin\Debug\Interface_UI.pdb
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\bin\Debug\EntityFramework.dll
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\bin\Debug\EntityFramework.SqlServer.dll
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\bin\Debug\EntityFramework.xml
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\bin\Debug\EntityFramework.SqlServer.xml
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\obj\Debug\Interface_UI.csproj.AssemblyReference.cache
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\obj\Debug\Interface_UI.Properties.Resources.resources
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\obj\Debug\Interface_UI.csproj.GenerateResource.cache
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\obj\Debug\Interface_UI.csproj.CoreCompileInputs.cache
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\obj\Debug\Interface_UI.csproj.CopyComplete
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\obj\Debug\Interface_UI.exe
+E:\HocTap\2021-HKC\SE\project\BackEnd\Interface_UI\Interface_UI\obj\Debug\Interface_UI.pdb

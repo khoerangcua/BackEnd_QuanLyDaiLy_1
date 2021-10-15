@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLDaiLyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tb_BC_CongNo">
+    <Key>
+      <PropertyRef Name="Ma_BC_CongNo" />
+    </Key>
+    <Property Name="Ma_DaiLy" Type="int" Nullable="false" />
+    <Property Name="Ngay_lap" Type="datetime" Nullable="false" />
+    <Property Name="No_Dau" Type="float" Nullable="false" />
+    <Property Name="Phat_Sinh" Type="float" Nullable="false" />
+    <Property Name="No_Cuoi" Type="float" Nullable="false" />
+    <Property Name="Ma_BC_CongNo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_BC_DoanhSo">
+    <Key>
+      <PropertyRef Name="Ma_BC_DoanhSo" />
+    </Key>
+    <Property Name="Ma_DaiLy" Type="int" Nullable="false" />
+    <Property Name="Ngay_Lap" Type="datetime" Nullable="false" />
+    <Property Name="So_PhieuXuat" Type="int" Nullable="false" />
+    <Property Name="Tong_TriGia" Type="float" Nullable="false" />
+    <Property Name="Ty_Le" Type="float" Nullable="false" />
+    <Property Name="Ma_BC_DoanhSo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_ChiTiet_XuatHang">
+    <Key>
+      <PropertyRef Name="Ma_ChiTiet_XuatHang" />
+    </Key>
+    <Property Name="Ma_PhieuXuat" Type="int" Nullable="false" />
+    <Property Name="Ma_HangHoa" Type="int" Nullable="false" />
+    <Property Name="So_Luong" Type="int" Nullable="false" />
+    <Property Name="Don_Gia" Type="float" Nullable="false" />
+    <Property Name="Thanh_Tien" Type="float" Nullable="false" />
+    <Property Name="Ma_ChiTiet_XuatHang" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_DaiLy">
+    <Key>
+      <PropertyRef Name="Ma_DaiLy" />
+    </Key>
+    <Property Name="Ma_DaiLy" Type="int" Nullable="false" />
+    <Property Name="Ten_DaiLy" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="Dien_Thoai" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Ma_Quan" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="Ma_Loai_DaiLy" Type="int" Nullable="false" />
+    <Property Name="Dia_Chi" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Ngay_Tiep_Nhan" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_HangHoa">
+    <Key>
+      <PropertyRef Name="Ma_HangHoa" />
+    </Key>
+    <Property Name="Ma_HangHoa" Type="int" Nullable="false" />
+    <Property Name="Ten_HangHoa" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Don_Gia" Type="float" Nullable="false" />
+    <Property Name="DonVi_Tinh" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_LoaiDaiLy">
+    <Key>
+      <PropertyRef Name="Ma_Loai_DaiLy" />
+    </Key>
+    <Property Name="Ma_Loai_DaiLy" Type="int" Nullable="false" />
+    <Property Name="Ten_Loai" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TienNo_ToiDa" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_PhieuThuTien">
+    <Key>
+      <PropertyRef Name="Ma_PhieuThu" />
+    </Key>
+    <Property Name="Ma_PhieuThu" Type="int" Nullable="false" />
+    <Property Name="Ma_DaiLy" Type="int" Nullable="false" />
+    <Property Name="Ngay_Lap" Type="datetime" Nullable="false" />
+    <Property Name="So_Tien_Thu" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_PhieuXuatHang">
+    <Key>
+      <PropertyRef Name="Ma_PhieuXuat" />
+    </Key>
+    <Property Name="Ma_PhieuXuat" Type="int" Nullable="false" />
+    <Property Name="Ma_DaiLy" Type="int" Nullable="false" />
+    <Property Name="Ngay_Lap" Type="datetime" Nullable="false" />
+    <Property Name="TongTien" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_Quan">
+    <Key>
+      <PropertyRef Name="Ma_Quan" />
+    </Key>
+    <Property Name="Ma_Quan" Type="int" Nullable="false" />
+    <Property Name="Ten_Quan" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DaiLy_ToiDa" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tb_BC_CongNo_tb_DaiLy">
+    <End Role="tb_DaiLy" Type="Self.tb_DaiLy" Multiplicity="1" />
+    <End Role="tb_BC_CongNo" Type="Self.tb_BC_CongNo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_DaiLy">
+        <PropertyRef Name="Ma_DaiLy" />
+      </Principal>
+      <Dependent Role="tb_BC_CongNo">
+        <PropertyRef Name="Ma_DaiLy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_BC_DoanhSo_tb_DaiLy">
+    <End Role="tb_DaiLy" Type="Self.tb_DaiLy" Multiplicity="1" />
+    <End Role="tb_BC_DoanhSo" Type="Self.tb_BC_DoanhSo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_DaiLy">
+        <PropertyRef Name="Ma_DaiLy" />
+      </Principal>
+      <Dependent Role="tb_BC_DoanhSo">
+        <PropertyRef Name="Ma_DaiLy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_ChiTiet_XuatHang_tb_HangHoa">
+    <End Role="tb_HangHoa" Type="Self.tb_HangHoa" Multiplicity="1" />
+    <End Role="tb_ChiTiet_XuatHang" Type="Self.tb_ChiTiet_XuatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_HangHoa">
+        <PropertyRef Name="Ma_HangHoa" />
+      </Principal>
+      <Dependent Role="tb_ChiTiet_XuatHang">
+        <PropertyRef Name="Ma_HangHoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_ChiTiet_XuatHang_tb_PhieuXuatHang">
+    <End Role="tb_PhieuXuatHang" Type="Self.tb_PhieuXuatHang" Multiplicity="1" />
+    <End Role="tb_ChiTiet_XuatHang" Type="Self.tb_ChiTiet_XuatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PhieuXuatHang">
+        <PropertyRef Name="Ma_PhieuXuat" />
+      </Principal>
+      <Dependent Role="tb_ChiTiet_XuatHang">
+        <PropertyRef Name="Ma_PhieuXuat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_DaiLy_tb_LoaiDaiLy">
+    <End Role="tb_LoaiDaiLy" Type="Self.tb_LoaiDaiLy" Multiplicity="1" />
+    <End Role="tb_DaiLy" Type="Self.tb_DaiLy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_LoaiDaiLy">
+        <PropertyRef Name="Ma_Loai_DaiLy" />
+      </Principal>
+      <Dependent Role="tb_DaiLy">
+        <PropertyRef Name="Ma_Loai_DaiLy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_DaiLy_tb_Quan">
+    <End Role="tb_Quan" Type="Self.tb_Quan" Multiplicity="1" />
+    <End Role="tb_DaiLy" Type="Self.tb_DaiLy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Quan">
+        <PropertyRef Name="Ma_Quan" />
+      </Principal>
+      <Dependent Role="tb_DaiLy">
+        <PropertyRef Name="Ma_Quan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PhieuThuTien_tb_DaiLy">
+    <End Role="tb_DaiLy" Type="Self.tb_DaiLy" Multiplicity="1" />
+    <End Role="tb_PhieuThuTien" Type="Self.tb_PhieuThuTien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_DaiLy">
+        <PropertyRef Name="Ma_DaiLy" />
+      </Principal>
+      <Dependent Role="tb_PhieuThuTien">
+        <PropertyRef Name="Ma_DaiLy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PhieuXuatHang_tb_DaiLy">
+    <End Role="tb_DaiLy" Type="Self.tb_DaiLy" Multiplicity="1" />
+    <End Role="tb_PhieuXuatHang" Type="Self.tb_PhieuXuatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_DaiLy">
+        <PropertyRef Name="Ma_DaiLy" />
+      </Principal>
+      <Dependent Role="tb_PhieuXuatHang">
+        <PropertyRef Name="Ma_DaiLy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLDaiLyModelStoreContainer">
+    <EntitySet Name="tb_BC_CongNo" EntityType="Self.tb_BC_CongNo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_BC_DoanhSo" EntityType="Self.tb_BC_DoanhSo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_ChiTiet_XuatHang" EntityType="Self.tb_ChiTiet_XuatHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_DaiLy" EntityType="Self.tb_DaiLy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_HangHoa" EntityType="Self.tb_HangHoa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_LoaiDaiLy" EntityType="Self.tb_LoaiDaiLy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PhieuThuTien" EntityType="Self.tb_PhieuThuTien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PhieuXuatHang" EntityType="Self.tb_PhieuXuatHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Quan" EntityType="Self.tb_Quan" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tb_BC_CongNo_tb_DaiLy" Association="Self.FK_tb_BC_CongNo_tb_DaiLy">
+      <End Role="tb_DaiLy" EntitySet="tb_DaiLy" />
+      <End Role="tb_BC_CongNo" EntitySet="tb_BC_CongNo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_BC_DoanhSo_tb_DaiLy" Association="Self.FK_tb_BC_DoanhSo_tb_DaiLy">
+      <End Role="tb_DaiLy" EntitySet="tb_DaiLy" />
+      <End Role="tb_BC_DoanhSo" EntitySet="tb_BC_DoanhSo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_ChiTiet_XuatHang_tb_HangHoa" Association="Self.FK_tb_ChiTiet_XuatHang_tb_HangHoa">
+      <End Role="tb_HangHoa" EntitySet="tb_HangHoa" />
+      <End Role="tb_ChiTiet_XuatHang" EntitySet="tb_ChiTiet_XuatHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_ChiTiet_XuatHang_tb_PhieuXuatHang" Association="Self.FK_tb_ChiTiet_XuatHang_tb_PhieuXuatHang">
+      <End Role="tb_PhieuXuatHang" EntitySet="tb_PhieuXuatHang" />
+      <End Role="tb_ChiTiet_XuatHang" EntitySet="tb_ChiTiet_XuatHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_DaiLy_tb_LoaiDaiLy" Association="Self.FK_tb_DaiLy_tb_LoaiDaiLy">
+      <End Role="tb_LoaiDaiLy" EntitySet="tb_LoaiDaiLy" />
+      <End Role="tb_DaiLy" EntitySet="tb_DaiLy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_DaiLy_tb_Quan" Association="Self.FK_tb_DaiLy_tb_Quan">
+      <End Role="tb_Quan" EntitySet="tb_Quan" />
+      <End Role="tb_DaiLy" EntitySet="tb_DaiLy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PhieuThuTien_tb_DaiLy" Association="Self.FK_tb_PhieuThuTien_tb_DaiLy">
+      <End Role="tb_DaiLy" EntitySet="tb_DaiLy" />
+      <End Role="tb_PhieuThuTien" EntitySet="tb_PhieuThuTien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PhieuXuatHang_tb_DaiLy" Association="Self.FK_tb_PhieuXuatHang_tb_DaiLy">
+      <End Role="tb_DaiLy" EntitySet="tb_DaiLy" />
+      <End Role="tb_PhieuXuatHang" EntitySet="tb_PhieuXuatHang" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

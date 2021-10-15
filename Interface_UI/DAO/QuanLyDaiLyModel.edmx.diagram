@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aa5347e72eb140b0b7ead6aa9d5dc8d2" Name="Diagram1">
+        <EntityTypeShape EntityType="QLDaiLyModel.tb_BC_CongNo" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDaiLyModel.tb_BC_DoanhSo" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDaiLyModel.tb_ChiTiet_XuatHang" Width="1.5" PointX="7.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDaiLyModel.tb_DaiLy" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDaiLyModel.tb_HangHoa" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDaiLyModel.tb_LoaiDaiLy" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDaiLyModel.tb_PhieuThuTien" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDaiLyModel.tb_PhieuXuatHang" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDaiLyModel.tb_Quan" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="QLDaiLyModel.FK_tb_BC_CongNo_tb_DaiLy" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDaiLyModel.FK_tb_BC_DoanhSo_tb_DaiLy" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDaiLyModel.FK_tb_ChiTiet_XuatHang_tb_HangHoa" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDaiLyModel.FK_tb_ChiTiet_XuatHang_tb_PhieuXuatHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDaiLyModel.FK_tb_DaiLy_tb_LoaiDaiLy" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDaiLyModel.FK_tb_DaiLy_tb_Quan" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDaiLyModel.FK_tb_PhieuThuTien_tb_DaiLy" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDaiLyModel.FK_tb_PhieuXuatHang_tb_DaiLy" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
