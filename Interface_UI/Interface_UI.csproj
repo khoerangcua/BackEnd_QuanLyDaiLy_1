@@ -56,8 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BUS\Controllers\HoSoDaiLyController.cs" />
+    <Compile Include="BUS\Controllers\SuaPhieuXuatHangController.cs" />
     <Compile Include="BUS\Controllers\TaiKhoanController.cs" />
     <Compile Include="BUS\Controllers\ThemPhieuXuatHangController.cs" />
+    <Compile Include="BUS\Controllers\XoaPhieuXuatHangController.cs" />
     <Compile Include="BUS\Validators\ChiTietPhieuXuatValidator.cs" />
     <Compile Include="BUS\Validators\PhieuXuatHangValidator.cs" />
     <Compile Include="BUS\Validators\TaiKhoanValidator.cs" />
