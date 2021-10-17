@@ -68,6 +68,8 @@ namespace Interface_UI.BUS.Controllers
             this.currentIDPhieuXuatHang = int.Parse(this.PhieuXuatHangData.Rows[e.RowIndex].Cells[0].Value.ToString());
             LoadChiTietPhieuXuatHang();
             this.ThemButton.Enabled = true;
+            this.SoLuongTextBox.Enabled = true;
+            this.HangHoaComboBox.Enabled = true;
         }
 
         public void LoadLanDau()
@@ -133,8 +135,7 @@ namespace Interface_UI.BUS.Controllers
                     this.PhieuXuatHangData.DataSource = null;
                     this.PhieuXuatHangData.DataSource = result;
                     this.PhieuXuatHangData.Enabled = true;
-                    
-
+                    LoadNoHienTai();
                 }
                 else
                 {
@@ -146,8 +147,13 @@ namespace Interface_UI.BUS.Controllers
         private void LoadNoHienTai()
         {
             var pxhs = from pxh in db.tb_PhieuXuatHang.ToList()
-                      where pxh.Ma_PhieuXuat == currentIDPhieuXuatHang
-                      select pxh;
+                      where pxh.Ma_DaiLy == int.Parse(this.DaiLyComboBox.SelectedValue.ToString())
+                       select pxh;
+            var ptts = from ptt in db.tb_PhieuThuTien.ToList()
+                       where ptt.Ma_DaiLy == int.Parse(this.DaiLyComboBox.SelectedValue.ToString())
+                       select ptt;
+
+            this.NoHienTaiTextBox.Text = (pxhs.Sum(p => p.TongTien) + ptts.Sum(p => p.So_Tien_Thu) + this.tempChiTiet_XuatHangs.Sum(p => p.Thanh_Tien)).ToString();
         }
 
         
@@ -161,6 +167,38 @@ namespace Interface_UI.BUS.Controllers
             this.ChiTietPhieuXuatHangData.DataSource = null;
             this.ChiTietPhieuXuatHangData.DataSource = result;
 
+        }
+
+        public bool ThemChiTietPhieuXuat()
+        {
+            //
+            //Lay thong tin
+            //
+            int idchitietphieuxuat = 1;
+            if (db.tb_ChiTiet_XuatHang.Any())
+            {
+                idchitietphieuxuat = db.tb_ChiTiet_XuatHang.Max(p => p.Ma_ChiTiet_XuatHang)+1;
+
+            }
+           
+            int idphieuxuathang = this.currentIDChiTietPhieuXuatHang;
+            int idhanghoa = int.Parse(this.HangHoaComboBox.SelectedValue.ToString());
+            int soluong = this.SoLuongTextBox.Text.All(char.IsDigit) ? int.Parse(this.SoLuongTextBox.Text) : -1;
+            double dongia = (from hh in db.tb_HangHoa
+                             where hh.Ma_HangHoa == int.Parse(this.HangHoaComboBox.SelectedValue.ToString())
+                             select hh.Don_Gia).Single();
+            double thanhtien = soluong * dongia;
+            bool checkinput = this.chiTietPhieuXuatValidator.KiemTraChiTietPhieuXuat(idphieuxuathang, idhanghoa, soluong, dongia, thanhtien);
+            if (checkinput==false)
+            {
+                this.MessageFailure = "chua dien day du thong tin";
+                return false;
+            }
+            else
+            {
+                // lafm tieesp cho nay, thuc hien kiem tra tien no 
+            }
+            
         }
 
 
